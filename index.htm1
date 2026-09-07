@@ -1,0 +1,1469 @@
+ได้เลยครับ นี่คือ **`index.html` แบบครบไฟล์เดียว** พร้อมเอาไปใส่ GitHub ได้เลย — ไม่ต้องสร้าง CSS หรือ JS แยก
+
+```
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFF3B0">
+<title>ELEMENT 118 • Pastel Science Lab</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap');
+
+:root{
+  --yellow:#FFF3B0;
+  --yellow2:#FFE58A;
+  --cream:#FFFBEF;
+  --pink:#F7B6D2;
+  --pink2:#D889AB;
+  --blue:#A9DDF5;
+  --purple:#CDB8F7;
+  --mint:#BDEBD7;
+  --orange:#FFC98B;
+  --ink:#554D48;
+  --muted:#8A817A;
+  --white:#fff;
+  --green:#8BD0AE;
+  --red:#E8A8BD;
+  --shadow:0 12px 35px rgba(105,86,50,.14);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Kanit',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%,#fff8cf 0,transparent 28%),
+    radial-gradient(circle at 90% 15%,#f8dff0 0,transparent 25%),
+    linear-gradient(135deg,#fffdf4,#fff6cf);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(#e7cf79 1px,transparent 1px);
+  background-size:28px 28px;
+  opacity:.18;
+  z-index:-1;
+}
+
+button,input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:22px;
+}
+
+.screen.active{
+  display:block;
+  animation:pageIn .28s ease;
+}
+
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.sticker{
+  position:fixed;
+  font-size:34px;
+  z-index:0;
+  pointer-events:none;
+  animation:float 4s ease-in-out infinite;
+}
+
+.sticker.a{left:2%;top:15%}
+.sticker.b{right:3%;top:24%;animation-delay:1s}
+.sticker.c{left:4%;bottom:10%;animation-delay:2s}
+.sticker.d{right:5%;bottom:8%;animation-delay:.5s}
+
+@keyframes float{
+  50%{
+    transform:translateY(-12px) rotate(5deg);
+  }
+}
+
+/* HOME */
+
+.home{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.home-inner{
+  max-width:950px;
+  width:100%;
+  position:relative;
+  z-index:1;
+}
+
+.brand{
+  font-family:Orbitron;
+  letter-spacing:5px;
+  font-size:13px;
+  color:#A48B42;
+}
+
+.logo{
+  font-family:Orbitron;
+  font-size:clamp(42px,10vw,92px);
+  line-height:.92;
+  font-weight:900;
+  color:#75603C;
+  text-shadow:5px 6px 0 #FFE9A6;
+  margin:8px 0 18px;
+}
+
+.logo span{
+  color:#D889AB;
+}
+
+.subtitle{
+  font-size:18px;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+
+.welcome{
+  background:#fffdf5;
+  border:2px dashed #E7CB73;
+  border-radius:24px;
+  padding:16px;
+  max-width:700px;
+  margin:0 auto 24px;
+  box-shadow:var(--shadow);
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  max-width:700px;
+  margin:auto;
+}
+
+.menu-btn{
+  border:0;
+  border-radius:22px;
+  padding:20px 15px;
+  background:var(--white);
+  color:var(--ink);
+  box-shadow:var(--shadow);
+  border:2px solid transparent;
+  transition:.2s;
+}
+
+.menu-btn:hover{
+  transform:translateY(-4px);
+  border-color:var(--yellow2);
+}
+
+.menu-btn .icon{
+  font-size:30px;
+  display:block;
+  margin-bottom:5px;
+}
+
+.menu-btn b{
+  display:block;
+  font-size:18px;
+}
+
+.menu-btn span:last-child{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* HEADER */
+
+.header{
+  max-width:1400px;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.back,
+.primary,
+.secondary,
+.sound-btn{
+  border:0;
+  border-radius:14px;
+  padding:10px 17px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.back{
+  background:#fff;
+  border:2px solid #E9D88E;
+  color:var(--ink);
+}
+
+.back:hover,
+.secondary:hover{
+  transform:translateY(-2px);
+  background:#fff8d7;
+}
+
+.page-title{
+  font-family:Orbitron;
+  font-size:clamp(19px,4vw,32px);
+}
+
+.page-title span{
+  color:#D889AB;
+}
+
+.top-score{
+  font-family:Orbitron;
+  color:#A18432;
+  font-size:12px;
+}
+
+/* INFO */
+
+.info{
+  max-width:1100px;
+  margin:0 auto 20px;
+  background:rgba(255,255,255,.85);
+  border:2px solid #F0DFA2;
+  border-radius:22px;
+  padding:17px 20px;
+  box-shadow:var(--shadow);
+}
+
+.info h3{
+  margin-bottom:5px;
+  color:#9A7840;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:10px;
+}
+
+.info-grid div{
+  background:#fffaf0;
+  border-radius:15px;
+  padding:10px;
+  font-size:13px;
+}
+
+.info-grid b{
+  display:block;
+  color:#B16E91;
+  margin-bottom:3px;
+}
+
+/* PERIODIC TABLE */
+
+.periodic-wrap{
+  max-width:1450px;
+  margin:auto;
+  overflow:auto;
+  padding:5px 5px 18px;
+}
+
+.periodic{
+  min-width:1100px;
+  display:grid;
+  grid-template-columns:repeat(18,1fr);
+  gap:5px;
+}
+
+.element{
+  aspect-ratio:1/1;
+  min-height:65px;
+  border:2px solid #E4DDBF;
+  border-radius:12px;
+  background:#fff;
+  padding:5px;
+  cursor:pointer;
+  transition:.15s;
+  position:relative;
+  box-shadow:0 4px 10px rgba(90,75,40,.07);
+}
+
+.element:hover{
+  transform:scale(1.06);
+  z-index:3;
+  box-shadow:0 10px 20px rgba(100,80,40,.15);
+}
+
+.element .num{
+  color:#A89C90;
+  font-size:9px;
+}
+
+.element .symbol{
+  font-family:Orbitron;
+  font-size:clamp(15px,1.5vw,25px);
+  color:#8A70B9;
+  font-weight:bold;
+}
+
+.element .en{
+  font-size:8px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.element .th{
+  font-size:7px;
+  color:#8B817A;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.alkali{border-color:#F4B2C7}
+.alkaline{border-color:#FFC98B}
+.transition{border-color:#CDB8F7}
+.post{border-color:#A9DDF5}
+.metalloid{border-color:#BDEBD7}
+.nonmetal{border-color:#FFE58A}
+.halogen{border-color:#F0B4DD}
+.noble{border-color:#A9DDF5}
+.lanthanide{border-color:#FFD39E}
+.actinide{border-color:#E9B9D1}
+
+.legend{
+  max-width:1200px;
+  margin:15px auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+}
+
+.legend span{
+  background:#fff;
+  border:1px solid #E6D9B1;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:10px;
+}
+
+/* SEARCH */
+
+.search{
+  max-width:800px;
+  margin:0 auto 20px;
+}
+
+.search input{
+  width:100%;
+  background:#fff;
+  border:2px solid #E7DDBD;
+  border-radius:17px;
+  color:var(--ink);
+  padding:14px 16px;
+  outline:none;
+  font-size:15px;
+}
+
+.search input:focus{
+  border-color:#CDB8F7;
+}
+
+/* CARDS */
+
+.grid{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:10px;
+}
+
+.card{
+  background:#fff;
+  border:2px solid #E9DFC4;
+  border-radius:17px;
+  padding:14px;
+  cursor:pointer;
+  transition:.15s;
+  box-shadow:0 5px 14px rgba(90,75,40,.07);
+}
+
+.card:hover{
+  border-color:#D8C2EF;
+  transform:translateY(-3px);
+}
+
+.card-symbol{
+  font-family:Orbitron;
+  font-size:34px;
+  color:#8A70B9;
+}
+
+.card-num{
+  font-size:10px;
+  color:#9B9187;
+}
+
+.card-name{
+  font-weight:bold;
+}
+
+.card-th{
+  color:#8A817A;
+  font-size:11px;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(75,62,45,.3);
+  backdrop-filter:blur(6px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:50;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(600px,100%);
+  background:#fffdf7;
+  border:3px solid #F0D78A;
+  border-radius:28px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(70,55,30,.2);
+}
+
+.big-symbol{
+  font-family:Orbitron;
+  font-size:86px;
+  color:#9A7BC2;
+}
+
+.modal h2{
+  font-size:30px;
+}
+
+.modal .thai{
+  color:#9B8E84;
+}
+
+.fact{
+  margin-top:17px;
+  padding:15px;
+  background:#FFF7D9;
+  border-radius:17px;
+}
+
+.sound-btn{
+  margin:5px;
+  background:#D9C7F7;
+  color:#574A6D;
+}
+
+/* QUIZ */
+
+.game-area,
+.survival{
+  max-width:900px;
+  margin:auto;
+}
+
+.status{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.stat{
+  background:#fff;
+  border:2px solid #E9DFC4;
+  border-radius:17px;
+  padding:11px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat small{
+  display:block;
+  color:#9A8E83;
+}
+
+.stat strong{
+  font-family:Orbitron;
+  font-size:21px;
+}
+
+.combo{
+  color:#A77929;
+}
+
+.hp{
+  color:#C06B8E;
+}
+
+.quiz-card{
+  background:#fffdf8;
+  border:2px solid #E9DFAF;
+  border-radius:26px;
+  padding:35px 25px;
+  text-align:center;
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:var(--shadow);
+}
+
+.question-label{
+  color:#B16E91;
+  font-family:Orbitron;
+  letter-spacing:2px;
+  font-size:11px;
+}
+
+.question{
+  font-size:clamp(23px,5vw,40px);
+  margin:18px 0;
+}
+
+.question-symbol{
+  font-family:Orbitron;
+  color:#8A70B9;
+  font-size:76px;
+}
+
+.answers{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+  max-width:620px;
+  margin:auto;
+  width:100%;
+}
+
+.answer{
+  padding:14px;
+  border:2px solid #E8DFC8;
+  border-radius:15px;
+  background:#fff;
+  color:var(--ink);
+  cursor:pointer;
+  font-size:16px;
+  transition:.15s;
+}
+
+.answer:hover{
+  border-color:#D7C0EF;
+  background:#FBF7FF;
+}
+
+.answer.correct{
+  border-color:#8BCFB0;
+  background:#E8FAF1;
+}
+
+.answer.wrong{
+  border-color:#E5A9C1;
+  background:#FFF0F5;
+}
+
+.timer{
+  height:8px;
+  background:#EFE7D5;
+  border-radius:99px;
+  margin-bottom:16px;
+  overflow:hidden;
+}
+
+.timer-bar{
+  height:100%;
+  width:100%;
+  background:linear-gradient(90deg,#F5C76C,#D7B5F3);
+  transition:width 1s linear;
+}
+
+/* SURVIVAL */
+
+.boss{
+  text-align:center;
+  background:#fffdf7;
+  border:2px solid #E9DFAF;
+  border-radius:26px;
+  padding:30px 20px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+
+.boss-icon{
+  font-size:70px;
+}
+
+.boss h2{
+  font-family:Orbitron;
+  color:#9A7BC2;
+  margin:7px 0;
+}
+
+.warning-text{
+  color:#8C8178;
+  font-size:13px;
+}
+
+.progress{
+  height:12px;
+  background:#EFE6D2;
+  margin:18px 0;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.progress div{
+  height:100%;
+  width:100%;
+  background:linear-gradient(90deg,#F3B5C9,#CDB8F7);
+  transition:.3s;
+}
+
+.survival-question{
+  text-align:center;
+  font-size:28px;
+  margin:25px 0;
+}
+
+/* RESULT */
+
+.result{
+  text-align:center;
+  max-width:700px;
+  margin:70px auto;
+  background:#fffdf8;
+  border:2px solid #E9DFAF;
+  border-radius:28px;
+  padding:35px;
+  box-shadow:var(--shadow);
+}
+
+.result h1{
+  font-family:Orbitron;
+  font-size:42px;
+  color:#B16E91;
+}
+
+.final-score{
+  font-family:Orbitron;
+  color:#A18432;
+  font-size:65px;
+  margin:15px;
+}
+
+.primary{
+  background:#DFAFC5;
+  color:#fff;
+  font-size:16px;
+}
+
+.secondary{
+  background:#fff;
+  border:2px solid #E5D9BD;
+  color:var(--ink);
+  font-size:16px;
+}
+
+.primary:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.04);
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  background:#fffdf5;
+  border:2px solid #E5D59D;
+  border-radius:999px;
+  padding:10px 17px;
+  z-index:100;
+  box-shadow:var(--shadow);
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+  .screen{
+    padding:14px;
+  }
+
+  .menu{
+    grid-template-columns:1fr;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .status{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-card{
+    padding:25px 14px;
+  }
+
+  .question-symbol{
+    font-size:60px;
+  }
+
+  .big-symbol{
+    font-size:70px;
+  }
+
+  .header{
+    flex-wrap:wrap;
+  }
+
+  .page-title{
+    order:-1;
+    width:100%;
+    text-align:center;
+  }
+
+  .periodic{
+    min-width:1050px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sticker a">🌼</div>
+<div class="sticker b">⭐</div>
+<div class="sticker c">🧪</div>
+<div class="sticker d">🐰</div>
+
+<!-- HOME -->
+<section id="home" class="screen active home">
+<div class="home-inner">
+
+<div class="brand">PASTEL SCIENCE LAB</div>
+
+<div class="logo">
+ELEMENT<br>
+<span>118</span>
+</div>
+
+<div class="subtitle">
+ห้องทดลองวิทยาศาสตร์แสนน่ารัก<br>
+เรียนรู้ธาตุทั้ง 118 ผ่านเกม
+</div>
+
+<div class="welcome">
+✨ เลือกหมวดที่อยากเล่น แล้วเริ่มสำรวจโลกของอะตอมได้เลย!
+</div>
+
+<div class="menu">
+
+<button class="menu-btn" onclick="startQuiz()">
+<span class="icon">🧠</span>
+<b>QUIZ LAB</b>
+<span>ทดสอบความรู้ธาตุ</span>
+</button>
+
+<button class="menu-btn" onclick="showPeriodic()">
+<span class="icon">🔬</span>
+<b>PERIODIC TABLE</b>
+<span>ตารางธาตุ 118 ธาตุ</span>
+</button>
+
+<button class="menu-btn" onclick="showExplore()">
+<span class="icon">🧪</span>
+<b>ELEMENT LAB</b>
+<span>ค้นหาและสำรวจธาตุ</span>
+</button>
+
+<button class="menu-btn" onclick="startSurvival()">
+<span class="icon">👾</span>
+<b>SURVIVAL MODE</b>
+<span>เอาตัวรอดจากคำถามธาตุ</span>
+</button>
+
+</div>
+
+<div style="margin-top:25px;color:#9B9187;font-size:12px">
+คะแนนสูงสุด: <b id="homeHighScore">0</b> ⭐
+</div>
+
+</div>
+</section>
+
+<!-- PERIODIC -->
+<section id="periodicScreen" class="screen">
+
+<div class="header">
+
+<button class="back" onclick="goHome()">← กลับหน้าหลัก</button>
+
+<div class="page-title">
+PERIODIC <span>TABLE</span>
+</div>
+
+<div class="top-score">
+118 ELEMENTS
+</div>
+
+</div>
+
+<div class="info">
+
+<h3>🔬 ตารางธาตุ 118 ธาตุ</h3>
+
+<p>
+กดที่ธาตุเพื่อดูชื่อ สัญลักษณ์ เลขอะตอม และข้อมูลเบื้องต้น
+</p>
+
+<div class="info-grid">
+
+<div>
+<b>Atomic Number</b>
+เลขอะตอมของธาตุ
+</div>
+
+<div>
+<b>Symbol</b>
+สัญลักษณ์ทางเคมี
+</div>
+
+<div>
+<b>Element</b>
+ชื่อธาตุภาษาอังกฤษและไทย
+</div>
+
+</div>
+
+</div>
+
+<div class="periodic-wrap">
+<div id="periodic" class="periodic"></div>
+</div>
+
+<div class="legend">
+<span>🩷 Alkali Metal</span>
+<span>🧡 Alkaline Earth</span>
+<span>💜 Transition Metal</span>
+<span>💙 Post-transition</span>
+<span>💚 Metalloid</span>
+<span>💛 Nonmetal</span>
+<span>💗 Halogen</span>
+<span>🩵 Noble Gas</span>
+<span>🍑 Lanthanide</span>
+<span>🌸 Actinide</span>
+</div>
+
+</section>
+
+<!-- EXPLORE -->
+<section id="exploreScreen" class="screen">
+
+<div class="header">
+
+<button class="back" onclick="goHome()">← กลับหน้าหลัก</button>
+
+<div class="page-title">
+ELEMENT <span>LAB</span>
+</div>
+
+<div class="top-score">
+DISCOVER
+</div>
+
+</div>
+
+<div class="info">
+<h3>🧪 Element Explorer</h3>
+<p>ค้นหาธาตุจากเลขอะตอม ชื่อภาษาอังกฤษ ชื่อภาษาไทย หรือสัญลักษณ์</p>
+</div>
+
+<div class="search">
+<input
+id="searchInput"
+type="text"
+placeholder="🔎 ค้นหา เช่น Gold, ทอง, Au หรือ 79..."
+oninput="searchElements()">
+</div>
+
+<div id="elementGrid" class="grid"></div>
+
+</section>
+
+<!-- QUIZ -->
+<section id="quizScreen" class="screen">
+
+<div class="header">
+
+<button class="back" onclick="goHome()">← ออก</button>
+
+<div class="page-title">
+QUIZ <span>LAB</span>
+</div>
+
+<div class="top-score">
+ELEMENT MASTER
+</div>
+
+</div>
+
+<div class="game-area">
+
+<div class="status">
+
+<div class="stat">
+<small>คะแนน</small>
+<strong id="quizScore">0</strong>
+</div>
+
+<div class="stat">
+<small>ข้อ</small>
+<strong id="quizNumber">1/10</strong>
+</div>
+
+<div class="stat">
+<small>Combo</small>
+<strong class="combo" id="quizCombo">0</strong>
+</div>
+
+<div class="stat">
+<small>เวลา</small>
+<strong class="hp" id="quizTime">15</strong>
+</div>
+
+</div>
+
+<div class="timer">
+<div id="timerBar" class="timer-bar"></div>
+</div>
+
+<div class="quiz-card">
+
+<div class="question-label">
+ELEMENT CHALLENGE
+</div>
+
+<div id="quizQuestion" class="question">
+กำลังเตรียมคำถาม...
+</div>
+
+<div id="quizAnswers" class="answers"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SURVIVAL -->
+<section id="survivalScreen" class="screen">
+
+<div class="header">
+
+<button class="back" onclick="goHome()">← ออก</button>
+
+<div class="page-title">
+SURVIVAL <span>MODE</span>
+</div>
+
+<div class="top-score">
+DON'T GIVE UP!
+</div>
+
+</div>
+
+<div class="survival">
+
+<div class="boss">
+
+<div class="boss-icon">👾</div>
+
+<h2>ATOM BOSS</h2>
+
+<div class="warning-text">
+ตอบให้ถูกก่อนพลังชีวิตหมด!
+</div>
+
+<div class="progress">
+<div id="survivalHp"></div>
+</div>
+
+<div>
+❤️ HP: <b id="survivalHpText">5</b>
+</div>
+
+</div>
+
+<div class="status">
+
+<div class="stat">
+<small>คะแนน</small>
+<strong id="survivalScore">0</strong>
+</div>
+
+<div class="stat">
+<small>รอดมาแล้ว</small>
+<strong id="survivalRound">0</strong>
+</div>
+
+<div class="stat">
+<small>Combo</small>
+<strong id="survivalCombo">0</strong>
+</div>
+
+<div class="stat">
+<small>สูงสุด</small>
+<strong id="survivalBest">0</strong>
+</div>
+
+</div>
+
+<div class="survival-question" id="survivalQuestion">
+กำลังเตรียมคำถาม...
+</div>
+
+<div id="survivalAnswers" class="answers"></div>
+
+</div>
+
+</section>
+
+<!-- RESULT -->
+<section id="resultScreen" class="screen">
+
+<div class="result">
+
+<div style="font-size:65px">🏆</div>
+
+<h1 id="resultTitle">
+GREAT JOB!
+</h1>
+
+<p id="resultMessage">
+คุณทำได้ดีมาก!
+</p>
+
+<div class="final-score" id="finalScore">
+0
+</div>
+
+<p>
+คะแนน
+</p>
+
+<div style="margin-top:25px">
+
+<button class="primary" onclick="startQuiz()">
+🔄 เล่นอีกครั้ง
+</button>
+
+<button class="secondary" onclick="goHome()">
+🏠 หน้าหลัก
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ELEMENT MODAL -->
+<div id="elementModal" class="modal" onclick="closeModal(event)">
+
+<div class="modal-box" onclick="event.stopPropagation()">
+
+<button
+onclick="hideModal()"
+style="float:right;border:0;background:#FFF1C5;border-radius:50%;width:35px;height:35px;font-size:18px">
+×
+</button>
+
+<div id="modalSymbol" class="big-symbol">H</div>
+
+<h2 id="modalName">Hydrogen</h2>
+
+<div id="modalThai" class="thai">ไฮโดรเจน</div>
+
+<div class="fact">
+
+<div>
+<b>เลขอะตอม</b>
+<span id="modalNumber">1</span>
+</div>
+
+<br>
+
+<div>
+<b>ประเภท</b>
+<span id="modalCategory">Nonmetal</span>
+</div>
+
+<br>
+
+<div>
+<b>ข้อมูล</b>
+<p id="modalFact">
+ธาตุที่มีเลขอะตอมต่ำที่สุด
+</p>
+</div>
+
+</div>
+
+<div style="margin-top:18px">
+
+<button class="sound-btn" onclick="speakElement()">
+🔊 อ่านชื่อ
+</button>
+
+<button class="sound-btn" onclick="hideModal()">
+✓ ปิด
+</button>
+
+</div>
+
+</div>
+</div>
+
+<div id="toast" class="toast">
+ถูกต้อง! 🎉
+</div>
+
+<script>
+
+/* =========================================================
+   ELEMENT DATABASE
+========================================================= */
+
+const elements = [
+
+["H","Hydrogen","ไฮโดรเจน","Nonmetal"],
+["He","Helium","ฮีเลียม","Noble Gas"],
+["Li","Lithium","ลิเทียม","Alkali Metal"],
+["Be","Beryllium","เบริลเลียม","Alkaline Earth"],
+["B","Boron","โบรอน","Metalloid"],
+["C","Carbon","คาร์บอน","Nonmetal"],
+["N","Nitrogen","ไนโตรเจน","Nonmetal"],
+["O","Oxygen","ออกซิเจน","Nonmetal"],
+["F","Fluorine","ฟลูออรีน","Halogen"],
+["Ne","Neon","นีออน","Noble Gas"],
+
+["Na","Sodium","โซเดียม","Alkali Metal"],
+["Mg","Magnesium","แมกนีเซียม","Alkaline Earth"],
+["Al","Aluminium","อะลูมิเนียม","Post-transition Metal"],
+["Si","Silicon","ซิลิคอน","Metalloid"],
+["P","Phosphorus","ฟอสฟอรัส","Nonmetal"],
+["S","Sulfur","กำมะถัน","Nonmetal"],
+["Cl","Chlorine","คลอรีน","Halogen"],
+["Ar","Argon","อาร์กอน","Noble Gas"],
+
+["K","Potassium","โพแทสเซียม","Alkali Metal"],
+["Ca","Calcium","แคลเซียม","Alkaline Earth"],
+["Sc","Scandium","สแกนเดียม","Transition Metal"],
+["Ti","Titanium","ไทเทเนียม","Transition Metal"],
+["V","Vanadium","วาเนเดียม","Transition Metal"],
+["Cr","Chromium","โครเมียม","Transition Metal"],
+["Mn","Manganese","แมงกานีส","Transition Metal"],
+["Fe","Iron","เหล็ก","Transition Metal"],
+["Co","Cobalt","โคบอลต์","Transition Metal"],
+["Ni","Nickel","นิกเกิล","Transition Metal"],
+["Cu","Copper","ทองแดง","Transition Metal"],
+["Zn","Zinc","สังกะสี","Transition Metal"],
+["Ga","Gallium","แกลเลียม","Post-transition Metal"],
+["Ge","Germanium","เจอร์เมเนียม","Metalloid"],
+["As","Arsenic","สารหนู","Metalloid"],
+["Se","Selenium","ซีลีเนียม","Nonmetal"],
+["Br","Bromine","โบรมีน","Halogen"],
+["Kr","Krypton","คริปทอน","Noble Gas"],
+
+["Rb","Rubidium","รูบิเดียม","Alkali Metal"],
+["Sr","Strontium","สตรอนเชียม","Alkaline Earth"],
+["Y","Yttrium","อิตเทรียม","Transition Metal"],
+["Zr","Zirconium","เซอร์โคเนียม","Transition Metal"],
+["Nb","Niobium","ไนโอเบียม","Transition Metal"],
+["Mo","Molybdenum","โมลิบดีนัม","Transition Metal"],
+["Tc","Technetium","เทคนีเชียม","Transition Metal"],
+["Ru","Ruthenium","รูทีเนียม","Transition Metal"],
+["Rh","Rhodium","โรเดียม","Transition Metal"],
+["Pd","Palladium","แพลเลเดียม","Transition Metal"],
+["Ag","Silver","เงิน","Transition Metal"],
+["Cd","Cadmium","แคดเมียม","Transition Metal"],
+["In","Indium","อินเดียม","Post-transition Metal"],
+["Sn","Tin","ดีบุก","Post-transition Metal"],
+["Sb","Antimony","พลวง","Metalloid"],
+["Te","Tellurium","เทลลูเรียม","Metalloid"],
+["I","Iodine","ไอโอดีน","Halogen"],
+["Xe","Xenon","ซีนอน","Noble Gas"],
+
+["Cs","Cesium","ซีเซียม","Alkali Metal"],
+["Ba","Barium","แบเรียม","Alkaline Earth"],
+["La","Lanthanum","แลนทานัม","Lanthanide"],
+["Ce","Cerium","ซีเรียม","Lanthanide"],
+["Pr","Praseodymium","เพรซีโอดิเมียม","Lanthanide"],
+["Nd","Neodymium","นีโอดิเมียม","Lanthanide"],
+["Pm","Promethium","โพรมีเทียม","Lanthanide"],
+["Sm","Samarium","ซาแมเรียม","Lanthanide"],
+["Eu","Europium","ยูโรเพียม","Lanthanide"],
+["Gd","Gadolinium","แกโดลิเนียม","Lanthanide"],
+["Tb","Terbium","เทอร์เบียม","Lanthanide"],
+["Dy","Dysprosium","ดิสโพรเซียม","Lanthanide"],
+["Ho","Holmium","โฮลเมียม","Lanthanide"],
+["Er","Erbium","เออร์เบียม","Lanthanide"],
+["Tm","Thulium","ทูเลียม","Lanthanide"],
+["Yb","Ytterbium","อิตเทอร์เบียม","Lanthanide"],
+["Lu","Lutetium","ลูทีเทียม","Lanthanide"],
+
+["Hf","Hafnium","แฮฟเนียม","Transition Metal"],
+["Ta","Tantalum","แทนทาลัม","Transition Metal"],
+["W","Tungsten","ทังสเตน","Transition Metal"],
+["Re","Rhenium","รีเนียม","Transition Metal"],
+["Os","Osmium","ออสเมียม","Transition Metal"],
+["Ir","Iridium","อิริเดียม","Transition Metal"],
+["Pt","Platinum","แพลทินัม","Transition Metal"],
+["Au","Gold","ทองคำ","Transition Metal"],
+["Hg","Mercury","ปรอท","Transition Metal"],
+["Tl","Thallium","แทลเลียม","Post-transition Metal"],
+["Pb","Lead","ตะกั่ว","Post-transition Metal"],
+["Bi","Bismuth","บิสมัท","Post-transition Metal"],
+["Po","Polonium","พอโลเนียม","Post-transition Metal"],
+["At","Astatine","แอสทาทีน","Halogen"],
+["Rn","Radon","เรดอน","Noble Gas"],
+
+["Fr","Francium","แฟรนเซียม","Alkali Metal"],
+["Ra","Radium","เรเดียม","Alkaline Earth"],
+["Ac","Actinium","แอกทิเนียม","Actinide"],
+["Th","Thorium","ทอเรียม","Actinide"],
+["Pa","Protactinium","โพรแทกทิเนียม","Actinide"],
+["U","Uranium","ยูเรเนียม","Actinide"],
+["Np","Neptunium","เนปทูเนียม","Actinide"],
+["Pu","Plutonium","พลูโทเนียม","Actinide"],
+["Am","Americium","อะเมริเซียม","Actinide"],
+["Cm","Curium","คูเรียม","Actinide"],
+["Bk","Berkelium","เบอร์คีเลียม","Actinide"],
+["Cf","Californium","แคลิฟอร์เนียม","Actinide"],
+["Es","Einsteinium","ไอน์สไตเนียม","Actinide"],
+["Fm","Fermium","เฟอร์เมียม","Actinide"],
+["Md","Mendelevium","เมนเดลีเวียม","Actinide"],
+["No","Nobelium","โนเบเลียม","Actinide"],
+["Lr","Lawrencium","ลอว์เรนเซียม","Actinide"],
+
+["Rf","Rutherfordium","รัทเทอร์ฟอร์เดียม","Transition Metal"],
+["Db","Dubnium","ดุบเนียม","Transition Metal"],
+["Sg","Seaborgium","ซีบอร์เกียม","Transition Metal"],
+["Bh","Bohrium","โบห์เรียม","Transition Metal"],
+["Hs","Hassium","แฮสเซียม","Transition Metal"],
+["Mt","Meitnerium","ไมต์เนเรียม","Transition Metal"],
+["Ds","Darmstadtium","ดาร์มสตัดเทียม","Transition Metal"],
+["Rg","Roentgenium","เรินต์เกเนียม","Transition Metal"],
+["Cn","Copernicium","โคเปอร์นิเซียม","Transition Metal"],
+["Nh","Nihonium","นิโฮเนียม","Post-transition Metal"],
+["Fl","Flerovium","ฟเลอโรเวียม","Post-transition Metal"],
+["Mc","Moscovium","มอสโกเวียม","Post-transition Metal"],
+["Lv","Livermorium","ลิเวอร์มอเรียม","Post-transition Metal"],
+["Ts","Tennessine","เทนเนสซีน","Halogen"],
+["Og","Oganesson","โอกาเนสซอน","Noble Gas"]
+
+];
+
+/* Add atomic numbers */
+
+const data = elements.map((e,i)=>({
+  number:i+1,
+  symbol:e[0],
+  name:e[1],
+  thai:e[2],
+  category:e[3]
+}));
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function hideAll(){
+  document.querySelectorAll(".screen").forEach(s=>{
+    s.classList.remove("active");
+  });
+}
+
+function goHome(){
+  clearInterval(quizTimer);
+  hideAll();
+  document.getElementById("home").classList.add("active");
+  updateHomeScore();
+}
+
+function showPeriodic(){
+  hideAll();
+  document.getElementById("periodicScreen").classList.add("active");
+  renderPeriodic();
+}
+
+function showExplore(){
+  hideAll();
+  document.getElementById("exploreScreen").classList.add("active");
+  renderExplore(data);
+}
+
+function showScreen(id){
+  hideAll();
+  document.getElementById(id).classList.add("active");
+}
+
+/* =========================================================
+   HOME SCORE
+========================================================= */
+
+function updateHomeScore(){
+  document.getElementById("homeHighScore").textContent =
+    localStorage.getItem("element118HighScore") || 0;
+}
+
+updateHomeScore();
+
+/* =========================================================
+   ELEMENT MODAL
+========================================================= */
+
+let currentElement=null;
+
+function openElement(number){
+
+  const el=data[number-1];
+
+  if(!el)return;
+
+  currentElement=el;
+
+  document.getElementById("modalSymbol").textContent=el.symbol;
+  document.getElementById("modalName").textContent=el.name;
+  document.getElementById("modalThai").textContent=el.thai;
+  document.getElementById("modalNumber").textContent=el.number;
+  document.getElementById("modalCategory").textContent=el.category;
+
+  let fact="ธาตุชนิดหนึ่งในตารางธาตุ";
+
+  if(el.number===1)
+    fact="ธาตุที่มีเลขอะตอมต่ำที่สุด และเป็นองค์ประกอบสำคัญของดาวฤกษ์";
+
+  if(el.number===6)
+    fact="คาร์บอนเป็นพื้นฐานสำคัญของเคมีอินทรีย์และสิ่งมีชีวิต";
+
+  if(el.number===8)
+    fact="ออกซิเจนมีความสำคัญต่อการหายใจของสิ่งมีชีวิตส่วนใหญ่";
+
+  if(el.number===79)
+    fact="ทองคำเป็นโลหะมีค่าที่มีสัญลักษณ์ Au";
+
+  if(el.number===92)
+    fact="ยูเรเนียมเป็นธาตุกัมมันตรังสีที่พบตามธรรมชาติ";
+
+  if(el.number===118)
+    fact="โอกาเนสซอนเป็นธาตุที่มีเลขอะตอมสูงที่สุดที่ค้นพบและได้รับการรับรอง";
+
+  document.getElementById("modalFact").textContent=fact;
+
+  document.getElementById("elementModal").classList.add("show");
+}
+
+function hideModal(){
+  document.getElementById("elementModal").classList.remove("show");
+}
+
+function closeModal(e){
+  if(e.target.id==="elementModal")hideModal();
+}
+
+function speakElement(){
+
+  if(!currentElement)return;
+
+  if(!("speechSynthesis" in window)){
+    showToast("เบราว์เซอร์นี้ไม่รองรับเสียง");
+    return;
+  }
+
+  const utterance=
+    new SpeechSynthesisUtterance(
+      `${currentElement.name}, ${currentElement.symbol}`
+    );
+
+  utterance.lang="en-US";
+
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+}
+
+/* =========================================================
+   PERIODIC TABLE
+========================================================= */
+
+/*
+  ตำแหน่งของธาตุในตารางแบบ 18 กลุ่ม
+*/
+
+const positions = {
+
+1:[1,1],2:[1,18],
+3:[2,1],4:[2,2],5:[2,13],6:[2,14],7:[2,15],8:[2,16],9:[2,17],10:[2,18],
+11:[3,1],12:[3,2],13:[3,13],14:[3,14],15:[3,15],16:[3,16],17:[3,17],18:[3,18],
+19:[4,1],20:[4,2],21:[4,3],22:[4,4],23:[4,5],24
+```
